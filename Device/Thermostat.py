@@ -143,11 +143,11 @@ class Thermostat:
         new_temp = message_split[3]
 
 
-        if type == 'command':
+        if type == 'HTTPcommand':
 
 
             if command == 'on':
-                print("OIIIIIIIIIII")
+
                 if(self.get_status() == 'off'):
                     self.set_status()
 

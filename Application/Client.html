@@ -71,6 +71,7 @@
 
                     <label for="temperatura">Nova Temperatura:</label>
                     <select id="temperatura" name="temperatura">
+                        <option value="19">19°C</option>
                         <option value="20">20°C</option>
                         <option value="21">21°C</option>
                         <option value="22">22°C</option>
@@ -96,7 +97,7 @@
         // Liga o dispositivo
         async function turnOnDevice(id, ip, port, temperatura) {
             try {
-                const message = 'command-' + id + '-' + ip + '-' + port + '-on' + "-" + temperatura;
+                const message = 'HTTPcommand-' + id + '-' + ip + '-' + port + '-on' + "-" + temperatura;
                 const confirmation = await fetch(`${URL}:${PORT}/send-command`, {
                     method: "POST",
                     headers: {
@@ -119,7 +120,7 @@
         // Desliga o dispositivo
         async function turnOffDevice(id, ip, port, temperatura) {
             try {
-                const message = 'command-' + id + '-' + ip + '-' + port + '-off' + "-" + temperatura;
+                const message = 'HTTPcommand-' + id + '-' + ip + '-' + port + '-off' + "-" + temperatura;
                 const confirmation = await fetch(`${URL}:${PORT}/send-command`, {
                     method: "POST",
                     headers: {
@@ -148,7 +149,7 @@
             }
             const novaTemperaturaElement = document.getElementById("temperatura");
             const novaTemperatura = novaTemperaturaElement.value;
-            const message = 'command-' + id + '-' + ip + '-' + port + '-newtemp' + "-" + `${novaTemperatura}`; //const message = 'command-' + id + '-127.0.0.1-8888-newtemp-${novaTemperatura}`;
+            const message = 'HTTPcommand-' + id + '-' + ip + '-' + port + '-newtemp' + "-" + `${novaTemperatura}`; //const message = 'command-' + id + '-127.0.0.1-8888-newtemp-${novaTemperatura}`;
             const confirmation = await fetch(`${URL}:${PORT}/send-command`, {
                 method: "POST",
                 headers: {
