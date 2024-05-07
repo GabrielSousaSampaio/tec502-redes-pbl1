@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="width=device-width, initial-scale=1.0">
+    <title>Aplicação</title>
+
+</head>
+<body>
+    <h1>Aplicação para termostato inteligente</h1>
+
+    <button onclick="devicesView()">Exibir dispositivos</button>
+
+    <div id="devices-container"></div>
+
+    <script>
+
+        // URL e a porta para a aplicação
+
+        const URL = "http://127.0.0.1";
+        const PORT = 5000;
+
+        // Retorna os dispositivos e atualiza a tabela a cada 3 segundos
+
+        async function devicesView() {
+
+            getDevices();
+            setInterval(getDevices, 3000);
+
+        }
+
+        // Retorna os dispositivos via API
+
+        async function getDevices() {
+
+            try {
+                const confirmation = await fetch(`${URL}:${PORT}/get-devices`);
+                const data = await confirmation.json();
+
+                if (confirmation.ok) {
+                    displayDevices(data.devices);
+                } else {
+                    throw new Error(data.message || "Falha ao tentar exibir a lista de dispositivos termostatos.");
+                }
+
+            } catch (error) {
+                displayDevices([]);
+            }
+        }
+
+        // Exibiçao do "display" para os dispositivos
+
+        function displayDevices(devices) {
+
+            const devicesContainer = document.getElementById("devices-container");
+            devicesContainer.innerHTML = "";
+
+            devices.forEach(device => {
+                const deviceInfoElement = document.createElement("div");
+                deviceInfoElement.classList.add("device-info");
+                deviceInfoElement.innerHTML = `
+
+                    <h3>Dispositivo Termostato:</h3>
+                    <p>==============================================================================</p>
+                    <p>ID: ${device.id}</p>
+                    <p>Estado: ${device.state}</p>
+                    <p>Temperatura: ${device.temperature} °C</p>
+                    <p>IP: ${device.ip}</p>
+                    <p>Porta TCP: ${device.port}</p>
+                    <p>==============================================================================</p>
+
+                    <label for="temperatura">Nova Temperatura:</label>
+                    <select id="temperatura" name="temperatura">
+                        <option value="20">20°C</option>
+                        <option value="21">21°C</option>
+                        <option value="22">22°C</option>
+                        <option value="23">23°C</option>
+                        <option value="24">24°C</option>
+                        <option value="25">25°C</option>
+                        <option value="26">26°C</option>
+                        <option value="27">27°C</option>
+                        <option value="28">28°C</option>
+                        <option value="29">29°C</option>
+                        <option value="30">30°C</option>
+
+                    </select>
+                    <button onclick="sendNewTemperature('${device.id}', '${device.ip}', ${device.port}, '${device.state}')">Enviar nova Temperatura</button>
+                    <button onclick="turnOnDevice('${device.id}', '${device.ip}', ${device.port}, ${device.temperature})">Ligar dispositivo</button>
+                    <button onclick="turnOffDevice('${device.id}', '${device.ip}', ${device.port}, ${device.temperature})">Desligar dispositivo</button>
+
+                `;
+                devicesContainer.appendChild(deviceInfoElement);
+            });
+        }
+
+        // Liga o dispositivo
+        async function turnOnDevice(id, ip, port, temperatura) {
+            try {
+                const message = 'command-' + id + '-' + ip + '-' + port + '-on' + "-" + temperatura;
+                const confirmation = await fetch(`${URL}:${PORT}/send-command`, {
+                    method: "POST",
+                    headers: {
+                "Content-Type": "application/json" // Definindo o cabeçalho Content-Type
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+                const data = await confirmation.json();
+
+                if (confirmation.ok) {
+                    alert("Dispositivo ligado com sucesso.");
+                } else {
+                    throw new Error(data.message || "Falha ao tentar ligar o dispositivo.");
+                }
+            } catch (error) {
+                alert("Erro ao fazer a solicitação: " + error.message);
+            }
+        }
+
+        // Desliga o dispositivo
+        async function turnOffDevice(id, ip, port, temperatura) {
+            try {
+                const message = 'command-' + id + '-' + ip + '-' + port + '-off' + "-" + temperatura;
+                const confirmation = await fetch(`${URL}:${PORT}/send-command`, {
+                    method: "POST",
+                    headers: {
+                "Content-Type": "application/json" // Definindo o cabeçalho Content-Type
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+                const data = await confirmation.json();
+
+                if (confirmation.ok) {
+                    alert("Dispositivo desligado com sucesso.");
+                } else {
+                    throw new Error(data.message || "Falha ao tentar desligar o dispositivo.");
+                }
+
+            } catch (error) {
+                alert("Erro ao fazer a solicitação: " + error.message);
+            }
+      }
+
+      // Envia uma nova temperatura
+      async function sendNewTemperature(id, ip, port, estado) {
+        try {
+            if (estado === "off") {
+                throw new Error("O dispositivo está desligado.");
+            }
+            const novaTemperaturaElement = document.getElementById("temperatura");
+            const novaTemperatura = novaTemperaturaElement.value;
+            const message = 'command-' + id + '-' + ip + '-' + port + '-newtemp' + "-" + `${novaTemperatura}`; //const message = 'command-' + id + '-127.0.0.1-8888-newtemp-${novaTemperatura}`;
+            const confirmation = await fetch(`${URL}:${PORT}/send-command`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ message: message })
+            });
+            const data = await confirmation.json();
+
+            if (confirmation.ok) {
+                alert(`Nova temperatura enviada com sucesso: ${novaTemperatura}°C.`);
+                getDevices();
+            } else {
+                throw new Error(data.message || "Falha ao enviar a temperatura.");
+            }
+            } catch (error) {
+            alert("Erro ao fazer a solicitação: " + error.message);
+            }
+      }
+
+    </script>
+</body>
+</html>
