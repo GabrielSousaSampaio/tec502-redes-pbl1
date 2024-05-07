@@ -227,11 +227,11 @@ class Broker:
 
                 for disp in self.devices_list:
 
-                    if type == "command":
+                    if type == "HTTPcommand":
 
                         if disp["ip"] == ip and disp['id'] == id:
 
-                            msg = f"command-{id}-{command}-{temperature}"
+                            msg = f"HTTPcommand-{id}-{command}-{temperature}"
 
                             disp["socket"].send(msg.encode())
 
@@ -353,7 +353,7 @@ class Broker:
                 type= command_split[0]
                 command = command_split[4]
 
-                if type == "command":
+                if type == "HTTPcommand":
 
                     if command != "on" and command != "off" and command != "newtemp":
                         return jsonify({"success": False, "message": "Comando inválido"}), 400
