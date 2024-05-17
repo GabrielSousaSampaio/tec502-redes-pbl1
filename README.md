@@ -205,8 +205,22 @@ Para garantir a funcionalidade e integridade da interface do usuário, do broker
 -	Solicitação para alterar o estado do dispositivo termostato (ligado ou desligado);
 -	Verificação da opção de trocar a temperatura do dispositivo termostato;
 -	Verificação da tentativa de conexão do dispositivo termostato com o broker desativado;
--	Verificação da tentativa de conexão da aplicação com o broker desativado;
--	Verificação da conexão entre a interface e o dispositivo termostato desativado;
+
+<h2>Verificação dos dispositivos e recursos disponíveis na interface de aplicação do usuário</h2>
+Na figura 3 é possível ver o terminal do broker com as informações de duas novas conexões recém estabelecidas, nesse caso do dispositivo 1 (IP: 127.0.0.1 e porta TCP: 49300) e do dispositivo 2 (IP: 127.0.0.1 e porta TCP: 49302). A figura 4 mostra os dispositivos exibidos na tela da aplicação com todos os seus status atuais, incluindo o ip e porta dos dispositivos conectados ao broker.
+
+<h2>Solicitação para alterar o estado do dispositivo termostato (ligado ou desligado)</h2>
+
+Na figura 5, têm-se a confirmação da solicitação do comando para ligar o dispositivo 2. Em seguida, percebe-se, através da figura 6, que o comando chega até o terminal do broker. A figura 7 mostra o dispositivo após com o seu status alterado para "on".
+
+<h2>Verificação da opção de trocar a temperatura do dispositivo termostato</h2>
+
+Na figura 8, têm-se a confirmação da solicitação do comando para alterar a temperatura do dispositivo 1 para 24°C. Em seguida, percebe-se, através da figura 9, que o comando chega até o terminal do broker. A figura 10 mostra o dispositivo com sua nova temperatura.
+
+
+<h2>Verificação da tentativa de conexão do dispositivo termostato com o broker desativado</h2>
+
+Na figura 11, têm-se a imagem do terminal do dispositivo 1 após ser ligado tentando conexão com o broker que está desligado. Logo após ligar o broker, percebe-se uma menssagem de conexão aceita no terminal do dispositivo (Figura 12).
 
 
 <h1 id="conclusao" align="center">Conclusão</h1>
