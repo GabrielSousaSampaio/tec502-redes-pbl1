@@ -73,6 +73,12 @@ Enfim, os protocolos de comunicação são fundamentais para permitir a integra�
 
 Este modelo pode ser representado por quatro camadas distintas: a camada de aplicação, a camada de transporte, a camada de internet e a camada física (Figura 1). 
 
+<p align="center">
+	<img src="Images/TcpIpMODELO.png" alt=Modelo TcpIp >
+</p>
+
+<p align="center">Figura 1. Camadas do modelo TCP/IP.</p>
+
 Na Camada de Link de Dados, a transmissão confiável de dados ocorre em um único link de comunicação, utilizando protocolos como Ethernet, Wi-Fi e PPP. A Camada de Internet gerencia o endereçamento IP, o roteamento de pacotes e a fragmentação, sendo responsável pelos protocolos IPv4 e IPv6.
 
 A Camada de Transporte oferece comunicação de host-a-host, garantindo a entrega ordenada e confiável dos dados. Para isso, utiliza os protocolos TCP (Transmission Control Protocol) e UDP (User Datagram Protocol). Por fim, a Camada de Aplicação fornece serviços de comunicação diretamente para aplicativos e usuários finais, incluindo protocolos como HTTP, FTP e SMTP.
@@ -137,6 +143,12 @@ Nesse contexto, API RESTful é uma abordagem para criar serviços web que segue 
 
 <p align="justify">A primeira etapa para o desenvolvimento do projeto foi a criação de um simples diagrama que pudesse ilustrar como seria a comunicação entre os três principais atores (Figura 2), sendo eles: o broker, a aplicação e o dispositivo.</p>
 
+<p align="center">
+	<img src="Images/DIAGRAMA.PNG" alt=Diagrama >
+</p>
+<p align="center">Figura 2. Diagrama para representar as interações entre os principais atores do projeto.</p>
+
+<p align="justify">O diagrama de comunicação revela que a interação entre a aplicação e o broker ocorre por meio de uma API que utiliza requisições HTTP, operando sobre o protocolo TCP. Essas requisições são utilizadas para transmitir comandos e receber respostas, representando eventos de sucesso ou falha, também via TCP. Por outro lado, a comunicação do dispositivo com o broker é realizada tanto por TCP quanto por UDP. O dispositivo recebe comandos do broker por meio de conexões TCP e envia seus dados utilizando o protocolo UDP. É relevante notar que o dispositivo emprega conexões TCP para enviar comandos de confirmação ao broker, garantindo a integridade e a confiabilidade da comunicação bidirecional.</p>
 
 <h2>Broker</h2>
 
