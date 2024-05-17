@@ -18,7 +18,6 @@ Implementação de um protótipo de dispositivo termostato, broker e aplicação
 <li><a href="#desenvolvimento"> <b>Desenvolvimento e Descrição em Alto Nível</b> </a> </li>
       <li><a href="#descricao-e-analise-dos-testes"> <b>Descrição e Análise dos Testes e Simulações, Resultados e Discussões</b> </a></li>
 	      <li><a href="#conclusao"> <b>Conclusão</b> </a></li>
-  <li><a href="#referencias"> <b>Referências</b> </a></li>
   <li><a href="#script-de-compilacao"> <b>Como executar</b> </a></li>
 </ul>
 
@@ -72,7 +71,7 @@ Enfim, os protocolos de comunicação são fundamentais para permitir a integra�
 
 <p align="justify">O modelo TCP/IP é o conjunto de regras e procedimentos que permite a comunicação entre dispositivos em uma rede. Desenvolvido inicialmente pelo Departamento de Defesa dos Estados Unidos na década de 1970, ele estabeleceu as bases para a arquitetura da internet moderna.
 
-Este modelo pode ser representado por quatro camadas distintas: a camada de aplicação, a camada de transporte, a camada de internet e a camada física. 
+Este modelo pode ser representado por quatro camadas distintas: a camada de aplicação, a camada de transporte, a camada de internet e a camada física (Figura 1). 
 
 Na Camada de Link de Dados, a transmissão confiável de dados ocorre em um único link de comunicação, utilizando protocolos como Ethernet, Wi-Fi e PPP. A Camada de Internet gerencia o endereçamento IP, o roteamento de pacotes e a fragmentação, sendo responsável pelos protocolos IPv4 e IPv6.
 
@@ -136,7 +135,8 @@ Nesse contexto, API RESTful é uma abordagem para criar serviços web que segue 
 
 <h1 id="desenvolvimento" align="center">Desenvolvimento, metodologia, implementações e teses</h1>
 
-<p align="justify">A primeira etapa para o desenvolvimento do projeto foi a criação de um simples diagrama que pudesse ilustrar como seria a comunicação entre os três principais atores, sendo eles: o broker, a aplicação e o dispositivo.</p>
+<p align="justify">A primeira etapa para o desenvolvimento do projeto foi a criação de um simples diagrama que pudesse ilustrar como seria a comunicação entre os três principais atores (Figura 2), sendo eles: o broker, a aplicação e o dispositivo.</p>
+
 
 <h2>Broker</h2>
 
@@ -183,6 +183,20 @@ A emulação de um termostato serve para demonstrar uma aplicação prática de 
 
 <h1 id="descricao-e-analise-dos-testes" align="center">Resultados e Discussões</h1>
 
+Na etapa final do projeto proposto, obteve-se excelentes resultados conforme as especificações desejadas, o sistema realiza a leitura e entrega precisa dos dados solicitados e a interface desenvolvida cumpre diretamente com seu papel interativo e ilustrativo, assim proporcionando uma melhor tomada de decisão por parte do usuário que a opera. A eficácia do projeto como um todo demonstra a compreensão dos principais tópicos exigidos.
+
+O uso da interface se dará através de uma interação simples e intuitiva por parte do usuário. Nesse caso, aparecerá um botão escrito “Exibir dispositivos”, ao ser pressionado será exibido um painel com todos os dispositivos termostatos disponíveis, incluindo seu ID, estado atual (ligado ou desligado) e temperatura atual. Caso nenhum dispositivo esteja conectado, não será exibido nada. Além disso, será possível realizar ações como ligar ou desligar um dispositivo termostato específico, bem como ajustar sua temperatura para um valor desejado. Essas interações serão feitas através de botões na interface.
+
+Para garantir a funcionalidade e integridade da interface do usuário, do broker e do dispositivo termostato simulado foram produzidos os seguintes testes:
+
+-	Verificação dos dispositivos e recursos disponíveis na interface de aplicação do usuário; 
+-	Solicitação para alterar o estado do dispositivo termostato (ligado ou desligado);
+-	Verificação da opção de trocar a temperatura do dispositivo termostato;
+-	Verificação da tentativa de conexão do dispositivo termostato com o broker desativado;
+-	Verificação da tentativa de conexão da aplicação com o broker desativado;
+-	Verificação da conexão entre a interface e o dispositivo termostato desativado;
+
+
 <h1 id="conclusao" align="center">Conclusão</h1>
 
 <p align="justify">
@@ -194,10 +208,24 @@ Além disso, os desafios enfrentados durante o desenvolvimento do projeto, como 
 
 Em suma, o projeto exemplifica o potencial da IoT em aplicações práticas e destaca a necessidade de uma abordagem sistemática para lidar com a comunicação e a integração de dispositivos em ambientes IoT. A experiência adquirida ao longo do desenvolvimento oferece uma base sólida para futuras implementações e inovações no campo da Internet das Coisas.</p>
 
-<h1 id="referencias" align="center">Referências</h1>
-
-<p align="justify">
-</p>
-
 <h1 id="script-de-compilacao" align="center">Como executar o projeto</h1> 
 
+O projeto consta com dois arquivos principais: "thermostat.py" e "broker.py". Ambos são executados em containers Docker. Siga as instruções abaixo para configurar e executar o sistema.
+
+Para executar o termostato, siga os passos abaixo:
+
+*	Entre pelo terminal.
+*	Navegue até a pasta "Device", onde o arquivo "thermostat.py" está localizado.
+*	Execute o comando:
+* 		 docker container run -it -e BROKER_IP=(digite o IP do broker) thermostat
+
+Para executar o broker, siga os passos abaixo:
+
+*	Entre no terminal.
+*	Navegue até a pasta "Broker", onde o arquivo "broker.py" está localizado.
+*	Execute o comando:
+*		 docker run -p 8888:8888 -p 9999:9999/udp -p 5001:5001 broker
+	
+Para executar a aplicação, abra o arquivo "Client.html" pelo navegador.
+
+Lembre-se de verificar se o IP cadastrado no "Client.html" é o mesmo IP da máquina onde o broker está rodando.
