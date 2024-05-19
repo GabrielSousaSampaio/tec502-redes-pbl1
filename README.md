@@ -207,21 +207,80 @@ Para garantir a funcionalidade e integridade da interface do usuário, do broker
 -	Verificação da tentativa de conexão do dispositivo termostato com o broker desativado;
 
 <h2>Verificação dos dispositivos e recursos disponíveis na interface de aplicação do usuário</h2>
-Na figura 3 é possível ver o terminal do broker com as informações de duas novas conexões recém estabelecidas, nesse caso do dispositivo 1 (IP: 127.0.0.1 e porta TCP: 49300) e do dispositivo 2 (IP: 127.0.0.1 e porta TCP: 49302). A figura 4 mostra os dispositivos exibidos na tela da aplicação com todos os seus status atuais, incluindo o ip e porta dos dispositivos conectados ao broker.
+<p align="justify">Na figura 3 é possível ver o terminal do broker com as informações de duas novas conexões recém estabelecidas, nesse caso do dispositivo 1 (IP: 127.0.0.1 e porta TCP: 49300) e do dispositivo 2 (IP: 127.0.0.1 e porta TCP: 49302). A figura 4 mostra os dispositivos exibidos na tela da aplicação com todos os seus status atuais, incluindo o ip e porta dos dispositivos conectados ao broker.</p>
+
+<p align="center">
+	<img src="Images/Figura3.PNG" alt=Figura 3 >
+</p>
+
+<p align="center">Figura 3. Terminal do broker indicando novas conexões.</p>
+
+<p align="center">
+	<img src="Images/Figura4.PNG" alt=Figura 4 >
+</p>
+
+<p align="center">Figura 4. Exibição dos dispositivos na tela da aplicação.</p>
 
 <h2>Solicitação para alterar o estado do dispositivo termostato (ligado ou desligado)</h2>
 
-Na figura 5, têm-se a confirmação da solicitação do comando para ligar o dispositivo 2. Em seguida, percebe-se, através da figura 6, que o comando chega até o terminal do broker. A figura 7 mostra o dispositivo após com o seu status alterado para "on".
+<p align="justify">Na figura 5, têm-se a confirmação da solicitação do comando para ligar o dispositivo 2. Em seguida, percebe-se, através da figura 6, que o comando chega até o terminal do broker. A figura 7 mostra o dispositivo após com o seu status alterado para "on".</p>
+
+<p align="center">
+	<img src="Images/Figura5.PNG" alt=Figura 5 >
+</p>
+
+<p align="center">Figura 5. Confirmação da solicitação do comando para ligar o dispositivo 2.</p>
+
+<p align="center">
+	<img src="Images/Figura6.PNG" alt=Figura 6 >
+</p>
+
+<p align="center">Figura 6. Comando recebido pelo broker.</p>
+
+<p align="center">
+	<img src="Images/Figura7.PNG" alt=Figura 7 >
+</p>
+
+<p align="center">Figura 7. Dispositvo com estado alterado para "on".</p>
+
 
 <h2>Verificação da opção de trocar a temperatura do dispositivo termostato</h2>
 
-Na figura 8, têm-se a confirmação da solicitação do comando para alterar a temperatura do dispositivo 1 para 24°C. Em seguida, percebe-se, através da figura 9, que o comando chega até o terminal do broker. A figura 10 mostra o dispositivo com sua nova temperatura.
+<p align="justify">Na figura 8, têm-se a confirmação da solicitação do comando para alterar a temperatura do dispositivo 1 para 24°C. Em seguida, percebe-se, através da figura 9, que o comando chega até o terminal do broker. A figura 10 mostra o dispositivo com sua nova temperatura.</p>
 
+<p align="center">
+	<img src="Images/Figura8.PNG" alt=Figura 8 >
+</p>
+
+<p align="center">Figura 8. Confirmação da solicitação do comando para alterar a temperatura do dispositivo 1 para 24°C.</p>
+
+<p align="center">
+	<img src="Images/Figura9.PNG" alt=Figura 9 >
+</p>
+
+<p align="center">Figura 9. Comando recebido pelo broker.</p>
+
+<p align="center">
+	<img src="Images/Figura10.PNG" alt=Figura 10 >
+</p>
+
+<p align="center">Figura 10. Dispositvo com temperatura alterada para 24°C.</p>
 
 <h2>Verificação da tentativa de conexão do dispositivo termostato com o broker desativado</h2>
 
-Na figura 11, têm-se a imagem do terminal do dispositivo 1 após ser ligado tentando conexão com o broker que está desligado. Logo após ligar o broker, percebe-se uma menssagem de conexão aceita no terminal do dispositivo (Figura 12).
+<p align="justify">Na figura 11, têm-se a imagem do terminal do dispositivo 1 após ser ligado tentando conexão com o broker que está desligado. Logo após ligar o broker, percebe-se uma menssagem de conexão aceita no terminal do dispositivo (Figura 12).</p>
 
+<p align="center">
+	<img src="Images/Figura11.PNG" alt=Figura 11 >
+</p>
+
+<p align="center">Figura 11. Terminal do dispositivo 1 indicando a tentativa de conexão com o broker desligado.</p>
+
+<p align="center">
+	<img src="Images/Figura12.PNG" alt=Figura 12 >
+</p>
+
+<p align="center">Figura 12. Terminal do dispositivo 1 indicando o sucesso da conexão com o broker após o mesmo ser ligado.</p>
 
 <h1 id="conclusao" align="center">Conclusão</h1>
 
